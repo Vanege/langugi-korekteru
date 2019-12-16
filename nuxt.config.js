@@ -1,10 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+  mode: 'spa',
   head: {
     title: 'Korekteru',
     meta: [
@@ -18,29 +15,15 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [],
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxt/typescript-build'
   ],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios'
@@ -50,10 +33,6 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -71,13 +50,5 @@ export default {
       }
     }
   },
-  /*
-   ** Build configuration
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
-  }
+  build: {}
 }
