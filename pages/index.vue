@@ -1,8 +1,8 @@
 <template>
   <div>
     Startu!
-    {{ text }}
-    <v-btn @click="changeText" />
+    {{ languguWords }}
+    <v-btn @click="getLanguguWords" />
   </div>
 </template>
 
@@ -14,8 +14,10 @@ import Vue from 'vue'
 export default class App extends Vue {
   text: string | null = null;
 
-  changeText() {
-    this.text = 'aaaa'
+  get languguWords(): string[] | null { return this.$store.state.languguWords }
+
+  getLanguguWords() {
+    this.$store.dispatch('getLanguguWords')
   }
 }
 </script>
