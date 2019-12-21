@@ -23,6 +23,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
+    "nuxt-property-decorator": "^2.5.0",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "^8.3.0"
   }

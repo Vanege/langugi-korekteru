@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import { Component } from 'vue-property-decorator'
-import Vue from 'vue'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { Context } from '@nuxt/types'
 
 @Component
 export default class App extends Vue {
@@ -18,6 +18,10 @@ export default class App extends Vue {
 
   getLanguguWords() {
     this.$store.dispatch('getLanguguWords')
+  }
+
+  async fetch({ store }: Context) {
+    await store.dispatch('getLanguguWords')
   }
 }
 </script>

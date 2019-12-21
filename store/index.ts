@@ -18,7 +18,8 @@ export const mutations = {
 }
 
 export const actions = {
-  async getLanguguWords (context: Store<State>) { // check in old nuxt projects
-    context.commit('setLanguguWords', ['aaa', 'bbb'])
+  async getLanguguWords (store: Store<State>) {
+    
+    store.commit('setLanguguWords', ['aaa', 'bbb'])
   }
 }
