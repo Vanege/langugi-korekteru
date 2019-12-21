@@ -24,8 +24,10 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@nuxtjs/axios"
     ],
+    "noImplicitAny": false,
     "experimentalDecorators": true
   },
   "exclude": [
