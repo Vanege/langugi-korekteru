@@ -26,8 +26,6 @@ export type ParsedElement = {
 export default class App extends Vue {
   text: string = ''
 
-  get languguWords(): string[] | null { return this.$store.state.languguWords }
-
   get parsedElements(): ParsedElement[] {
     const parsedElements: ParsedElement[] = []
     let wordInConstruction: string = ''
