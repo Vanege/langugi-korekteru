@@ -1,8 +1,13 @@
 <template>
   <div>
-    <textarea v-model="text" type="text" rows="4" cols="80" placeholder="Type your text here (ex: mu wanta huga yu)" />
-    <hr>
-    <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
+    <v-textarea
+      v-model="text"
+      outlined
+      placeholder="Rita tekstu ki yu wanta analiza wito ti korekteru."
+    />
+    <v-sheet class="parsedSheet">
+      <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
+    </v-sheet>
   </div>
 </template>
 
@@ -24,7 +29,7 @@ export type ParsedElement = {
   }
 })
 export default class App extends Vue {
-  text: string = ''
+  text: string = 'Starti tekstu foro analiza fasti'
 
   get parsedElements(): ParsedElement[] {
     const parsedElements: ParsedElement[] = []
@@ -47,6 +52,7 @@ export default class App extends Vue {
         parsedElements.push(newElement)
         wordInConstruction = ''
       }
+      // TODO: handle the last word being built
     }
     return parsedElements
   }
@@ -56,3 +62,9 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.parsedSheet {
+  background-color: rgb(236, 236, 236)
+}
+</style>
