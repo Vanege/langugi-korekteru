@@ -5,7 +5,7 @@
       outlined
       placeholder="Rita tekstu ki yu wanta analiza wito ti korekteru."
     />
-    <v-sheet class="grey lighten-3 mb-4">
+    <v-sheet class="grey lighten-3 mb-6">
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
     <ColorCode />
