@@ -19,7 +19,7 @@
         </template>
         <div><b>{{ !hasLanguguMatches ? 'No bo wordlistu' : '' }}</b></div>
         <div v-for="(lm, index) in languguMatches" :key="index">
-          {{ lm.english }} | {{ lm.esperanto }} | {{ lm.langugu }}
+          <b>{{ lm.english }}</b> | {{ lm.esperanto }} | {{ lm.langugu }}
         </div>
         <div v-for="(tm, index) in trapMatches" :key="index">
           {{ tm.english }} | {{ tm.esperanto }} | <b>{{ tm.langugu }}</b>
@@ -41,9 +41,13 @@ export default class Element extends Vue {
   @Prop() readonly element!: ParsedElement
 
   get wordRows(): WordRow[] { return this.$store.state.wordRows }
-  get lowercaseString(): string { return this.element.string.toLowerCase() }
-  get languguMatches(): WordRow[] { return this.wordRows.filter(wr => wr.langugu === this.lowercaseString) }
-  get trapMatches(): WordRow[] { return this.wordRows.filter(wr => wr.trap === this.lowercaseString) }
+  get stringToMatch(): string { return this.element.string.toLowerCase() }
+  get suffixlessStringToMatch(): string {
+    // handle the -ed- and -er- suffixes
+    return this.stringToMatch.replace(/eda$|edi$|edu$|era$|eri$|eru$/, 'a')
+  }
+  get languguMatches(): WordRow[] { return this.wordRows.filter(wr => wr.langugu === this.stringToMatch || wr.langugu === this.suffixlessStringToMatch) }
+  get trapMatches(): WordRow[] { return this.wordRows.filter(wr => wr.trap === this.stringToMatch || wr.trap === this.suffixlessStringToMatch) }
   get hasLanguguMatches(): boolean { return this.languguMatches.length > 0 }
   get hasTrapMatches(): boolean { return this.trapMatches.length > 0 }
 

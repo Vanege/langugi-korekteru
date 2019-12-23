@@ -10,6 +10,7 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript'
   ],
   rules: {
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "lines-between-class-members": 0
   }
 }
