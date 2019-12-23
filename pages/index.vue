@@ -9,6 +9,7 @@
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
     <ColorCode />
+    Ti wordlistu nowi hava {{ numberOfUniqueLanguguWords }} wordu
   </div>
 </template>
 
@@ -17,7 +18,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { Context } from '@nuxt/types'
 import Element from '~/components/Element.vue'
 import ColorCode from '~/components/ColorCode.vue'
-import { ParsedElement } from '~/types'
+import { ParsedElement, WordRow } from '~/types'
 
 @Component({
   components: {
@@ -60,6 +61,11 @@ export default class App extends Vue {
     }
     return parsedElements
   }
+
+  get wordRows(): WordRow[] { return this.$store.state.wordRows }
+  get languguWords(): string[] { return this.wordRows.map(wR => wR.langugu) }
+  get uniqueLanguguWords(): string[] { return [...new Set(this.languguWords)] }
+  get numberOfUniqueLanguguWords(): number { return this.uniqueLanguguWords.length }
 
   async fetch({ store }: Context) {
     await store.dispatch('getStoreData')
