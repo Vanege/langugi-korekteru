@@ -15,13 +15,7 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Context } from '@nuxt/types'
 import Element from '~/components/Element.vue'
-
-// the whole text to check is divided into elements that can be words (any string of allowed characters), or an other character
-export type ParsedElement = {
-  // a parsed element is a word if every character of the original string is a word character
-  isAWord: boolean;
-  string: string;
-}
+import { ParsedElement } from '~/types'
 
 @Component({
   components: {

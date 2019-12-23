@@ -1,21 +1,7 @@
 import { isDefined } from "~/tools/type-guards"
 import { Store } from "vuex/types/index"
+import { WordRow, emptyWordRowFactory } from "~/types"
 
-export type WordRow = {
-  english: string
-  esperanto: string
-  langugu: string
-  trap: string
-}
-
-const emptyWordRowFactory = (): WordRow => {
-  return {
-    english: '',
-    esperanto: '',
-    langugu: '',
-    trap: ''
-  }
-}
 
 type State = {
   wordRows: WordRow[]
