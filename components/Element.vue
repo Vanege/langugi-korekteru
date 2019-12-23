@@ -10,7 +10,9 @@
               'green': hasLanguguMatches && !hasTrapMatches,
               'yellow': hasLanguguMatches && hasTrapMatches,
               'orange': !hasLanguguMatches && !hasTrapMatches,
-              'red': !hasLanguguMatches && hasTrapMatches
+              'red': !hasLanguguMatches && hasTrapMatches,
+              'italic': !hasLanguguMatches,
+              'bold': hasTrapMatches
             }"
             v-on="on"
           >{{ element.string }}</span>
@@ -51,5 +53,11 @@ export default class Element extends Vue {
 <style lang="scss" scoped>
 .round-borders {
   border-radius: 5px
+}
+.italic {
+  font-style: italic
+}
+.bold {
+  font-weight: bold
 }
 </style>

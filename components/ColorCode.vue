@@ -1,9 +1,9 @@
 <template>
   <v-sheet class="yellow lighten-5">
     <div><span class="green round-borders">greni</span>: bo wordlistu</div>
-    <div><span class="yellow round-borders">yelowi</span>: bo wordlistu + maybi trapu</div>
-    <div><span class="orange round-borders">orangi</span>: no bo wordlistu</div>
-    <div><span class="red round-borders">redi</span>: no bo wordlistu + maybi trapu</div>
+    <div><span class="yellow round-borders bold">yelowi</span>: bo wordlistu + maybi trapu</div>
+    <div><span class="orange round-borders italic">orangi</span>: no bo wordlistu</div>
+    <div><span class="red round-borders italic bold">redi</span>: no bo wordlistu + maybi trapu</div>
   </v-sheet>
 </template>
 
@@ -17,5 +17,11 @@ export default class ColorCode extends Vue {}
 <style lang="scss" scoped>
 .round-borders {
   border-radius: 5px;
+}
+.italic {
+  font-style: italic
+}
+.bold {
+  font-weight: bold
 }
 </style>

@@ -26,7 +26,7 @@ import { ParsedElement } from '~/types'
   }
 })
 export default class App extends Vue {
-  text: string = 'Starti tekstu foro analiza fasti'
+  text: string = 'Klika bo wordu foro aska ko ti wordu adedi.'
 
   get parsedElements(): ParsedElement[] {
     const parsedElements: ParsedElement[] = []
