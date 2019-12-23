@@ -10,7 +10,7 @@
       >{{ element.string }}</span>
     </template>
     <template v-if="isAMissingWord">
-      <span>Wordu no bo wordlistu</span>
+      <span>no bo wordlistu!</span>
     </template>
   </v-tooltip>
 </template>

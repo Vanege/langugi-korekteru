@@ -58,7 +58,7 @@ export default class App extends Vue {
   }
 
   async fetch({ store }: Context) {
-    await store.dispatch('getLanguguWords')
+    await store.dispatch('getStoreData')
   }
 }
 </script>
