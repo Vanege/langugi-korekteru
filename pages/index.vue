@@ -3,7 +3,7 @@
     <v-textarea
       v-model="text"
       outlined
-      placeholder="Rita tekstu ki yu wanta analiza wito ti korekteru."
+      placeholder="Rita ti tekstu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
     />
     <v-sheet class="grey lighten-3 mb-6">
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
@@ -26,7 +26,7 @@ import { ParsedElement } from '~/types'
   }
 })
 export default class App extends Vue {
-  text: string = 'Klika bo wordu foro aska ko ti wordu adedi.'
+  text: string = ''
 
   get parsedElements(): ParsedElement[] {
     const parsedElements: ParsedElement[] = []
