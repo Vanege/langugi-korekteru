@@ -49,7 +49,14 @@ export default class App extends Vue {
         parsedElements.push(newElement)
         wordInConstruction = ''
       }
-      // TODO: handle the last word being built
+    }
+    // if a word was being built before the end, add it
+    if (wordInConstruction.length > 0) {
+      const newUnfinishedWordElement: ParsedElement = {
+        isAWord: false,
+        string: wordInConstruction
+      }
+      parsedElements.push(newUnfinishedWordElement)
     }
     return parsedElements
   }
