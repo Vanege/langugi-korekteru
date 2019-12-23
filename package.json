@@ -1,7 +1,7 @@
 {
   "name": "langugi-korekteru",
   "version": "1.0.0",
-  "description": "Korekteru foro verifa tekstu riteda wito Langugu",
+  "description": "Korekteru foro verifa mesagu ritedi wito Langugu",
   "author": "",
   "private": true,
   "scripts": {

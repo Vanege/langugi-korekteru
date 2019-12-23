@@ -3,7 +3,7 @@
     <v-textarea
       v-model="text"
       outlined
-      placeholder="Rita ti tekstu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
+      placeholder="Rita ti mesagu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
     />
     <v-sheet class="grey lighten-3 mb-6">
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
