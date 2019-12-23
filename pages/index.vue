@@ -9,7 +9,7 @@
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
     <ColorCode />
-    Ti wordlistu nowi hava {{ numberOfUniqueLanguguWords }} wordu
+    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1sA7RsI5FinqWQ3WMyhP4gVVyq_zEyp77QUMbWdRWM7M">Ti wordlistu nowi hava {{ numberOfUniqueLanguguWords }} wordu</a>
   </div>
 </template>
 
