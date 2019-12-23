@@ -2,7 +2,7 @@
   <v-tooltip v-model="showTooltip" bottom>
     <template v-slot:activator="{ on }">
       <span
-        class="indicator"
+        class="round-borders"
         :class="{
           'orange': isAMissingWord
         }"
@@ -16,7 +16,7 @@
       {{ lm.english }} | {{ lm.esperanto }} | {{ lm.langugu }}
     </div>
     <div v-for="(tm, index) in trapMatches" :key="index">
-      {{ tm.english }} | {{ tm.esperanto }} | {{ tm.langugu }}
+      {{ tm.english }} | {{ tm.esperanto }} | <b>{{ tm.langugu }}</b>
     </div>
   </v-tooltip>
 </template>
@@ -24,6 +24,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import { ParsedElement, WordRow } from '~/types'
+
+/*
+yelowi: wordu no bo wordlistu ando kana ba trapu
+orangi: wordu no bo wordlistu
+redi: wordu bo wordlistu buto kana ba trapu
+*/
 
 @Component
 export default class Element extends Vue {
@@ -43,10 +49,7 @@ export default class Element extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.indicator {
+.round-borders {
   border-radius: 5px
-}
-.orange {
-  background-color: orange
 }
 </style>

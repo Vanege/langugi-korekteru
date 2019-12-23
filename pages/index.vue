@@ -5,9 +5,10 @@
       outlined
       placeholder="Rita tekstu ki yu wanta analiza wito ti korekteru."
     />
-    <v-sheet class="parsedSheet">
+    <v-sheet class="grey lighten-3 mb-4">
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
+    <ColorCode />
   </div>
 </template>
 
@@ -15,11 +16,13 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Context } from '@nuxt/types'
 import Element from '~/components/Element.vue'
+import ColorCode from '~/components/ColorCode.vue'
 import { ParsedElement } from '~/types'
 
 @Component({
   components: {
-    Element
+    Element,
+    ColorCode
   }
 })
 export default class App extends Vue {
@@ -58,7 +61,4 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.parsedSheet {
-  background-color: rgb(236, 236, 236)
-}
 </style>
