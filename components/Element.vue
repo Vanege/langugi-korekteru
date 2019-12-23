@@ -1,48 +1,48 @@
 <template>
-  <v-tooltip v-model="showTooltip" bottom>
-    <template v-slot:activator="{ on }">
-      <span
-        class="round-borders"
-        :class="{
-          'orange': isAMissingWord
-        }"
-        v-on="on"
-      >{{ element.string }}</span>
+  <span>
+    <!-- display a tooltip only if the element is a word -->
+    <template v-if="element.isAWord">
+      <v-tooltip v-model="showTooltip" bottom>
+        <template v-slot:activator="{ on }">
+          <span
+            class="round-borders"
+            :class="{
+              'green': hasLanguguMatches && !hasTrapMatches,
+              'yellow': hasLanguguMatches && hasTrapMatches,
+              'orange': !hasLanguguMatches && !hasTrapMatches,
+              'red': !hasLanguguMatches && hasTrapMatches
+            }"
+            v-on="on"
+          >{{ element.string }}</span>
+        </template>
+        <div><b>{{ !hasLanguguMatches ? 'No bo wordlistu' : '' }}</b></div>
+        <div v-for="(lm, index) in languguMatches" :key="index">
+          {{ lm.english }} | {{ lm.esperanto }} | {{ lm.langugu }}
+        </div>
+        <div v-for="(tm, index) in trapMatches" :key="index">
+          {{ tm.english }} | {{ tm.esperanto }} | <b>{{ tm.langugu }}</b>
+        </div>
+      </v-tooltip>
     </template>
-    <template v-if="isAMissingWord">
-      <span><b>no bo wordlistu!</b></span>
+    <template v-else>
+      <span>{{ element.string }}</span>
     </template>
-    <div v-for="(lm, index) in languguMatches" :key="index">
-      {{ lm.english }} | {{ lm.esperanto }} | {{ lm.langugu }}
-    </div>
-    <div v-for="(tm, index) in trapMatches" :key="index">
-      {{ tm.english }} | {{ tm.esperanto }} | <b>{{ tm.langugu }}</b>
-    </div>
-  </v-tooltip>
+  </span>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import { ParsedElement, WordRow } from '~/types'
 
-/*
-yelowi: wordu no bo wordlistu ando kana ba trapu
-orangi: wordu no bo wordlistu
-redi: wordu bo wordlistu buto kana ba trapu
-*/
-
 @Component
 export default class Element extends Vue {
   @Prop() readonly element!: ParsedElement
 
-  get languguWords(): string[] { return this.$store.state.languguWords }
-  get isALanguguWord(): boolean { return this.languguWords.includes(this.element.string) }
-  get isAWord(): boolean { return this.element.isAWord }
-  get isAMissingWord(): boolean { return this.isAWord && !this.isALanguguWord }
-
   get wordRows(): WordRow[] { return this.$store.state.wordRows }
   get languguMatches(): WordRow[] { return this.wordRows.filter(wr => wr.langugu === this.element.string) }
   get trapMatches(): WordRow[] { return this.wordRows.filter(wr => wr.trap === this.element.string) }
+  get hasLanguguMatches(): boolean { return this.languguMatches.length > 0 }
+  get hasTrapMatches(): boolean { return this.trapMatches.length > 0 }
 
   showTooltip: boolean = false
 }
