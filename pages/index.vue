@@ -3,13 +3,14 @@
     <v-textarea
       v-model="text"
       outlined
-      placeholder="Rita ti mesagu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
+      placeholder="Rita ti mesagu, ki yu wanta seka. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
     />
-    <v-sheet class="grey lighten-3 mb-6">
+    <v-sheet class="grey lighten-3">
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
-    <ColorCode />
+    <ColorCode class="mt-6" />
     <a target="_blank" href="https://docs.google.com/spreadsheets/d/1sA7RsI5FinqWQ3WMyhP4gVVyq_zEyp77QUMbWdRWM7M">Ti wordlistu nowi hava {{ numberOfUniqueLanguguWords }} wordu</a>
+    <SearchBlock class="mt-6" />
   </div>
 </template>
 
@@ -18,12 +19,14 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { Context } from '@nuxt/types'
 import Element from '~/components/Element.vue'
 import ColorCode from '~/components/ColorCode.vue'
+import SearchBlock from '~/components/SearchBlock.vue'
 import { ParsedElement, WordRow } from '~/types'
 
 @Component({
   components: {
     Element,
-    ColorCode
+    ColorCode,
+    SearchBlock
   }
 })
 export default class App extends Vue {
