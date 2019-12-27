@@ -7,21 +7,26 @@
       placeholder="Sersa wordu bo ti wordlistu"
       value.sync="searchedText"
     />
-    <template v-if="hasEnglishMatches && searchedText.length > 2">
-      <div v-for="(match, index) in englishMatches" :key="`english-match-${index}`">
-        <template v-if="index < matchesMax">
-          <b>{{ match.english }}</b> | {{ match.esperanto }} | {{ match.langugu }}
+    <v-row>
+      <v-col>
+        <template v-if="hasEnglishMatches && searchedText.length > 2">
+          <div v-for="(match, index) in englishMatches" :key="`english-match-${index}`">
+            <template v-if="index < matchesMax">
+              <b>{{ match.english }}</b> | {{ match.esperanto }} | {{ match.langugu }}
+            </template>
+          </div>
         </template>
-      </div>
-    </template>
-    <v-divider />
-    <template v-if="hasEsperantoMatches && searchedText.length > 2">
-      <div v-for="(match, index) in esperantoMatches" :key="`esperanto-match-${index}`">
-        <template v-if="index < matchesMax">
-          {{ match.english }} | <b>{{ match.esperanto }}</b> | {{ match.langugu }}
+      </v-col>
+      <v-col>
+        <template v-if="hasEsperantoMatches && searchedText.length > 2">
+          <div v-for="(match, index) in esperantoMatches" :key="`esperanto-match-${index}`">
+            <template v-if="index < matchesMax">
+              {{ match.english }} | <b>{{ match.esperanto }}</b> | {{ match.langugu }}
+            </template>
+          </div>
         </template>
-      </div>
-    </template>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
