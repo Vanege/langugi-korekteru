@@ -10,7 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore . vue-shim.d.ts",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "deploy": "yarn generate:gh-pages && ./deploy.sh"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.0",
