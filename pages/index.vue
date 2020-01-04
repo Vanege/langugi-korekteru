@@ -9,7 +9,7 @@
       <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
     </v-sheet>
     <ColorCode class="mt-6" />
-    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1sA7RsI5FinqWQ3WMyhP4gVVyq_zEyp77QUMbWdRWM7M">Ti wordlistu nowi hava {{ numberOfUniqueLanguguWords }} wordu</a>
+    <UniqueWordsCounter />
     <SearchBlock class="mt-6" />
   </div>
 </template>
@@ -19,13 +19,15 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { Context } from '@nuxt/types'
 import Element from '~/components/Element.vue'
 import ColorCode from '~/components/ColorCode.vue'
+import UniqueWordsCounter from '~/components/UniqueWordsCounter.vue'
 import SearchBlock from '~/components/SearchBlock.vue'
-import { ParsedElement, WordRow } from '~/types'
+import { ParsedElement } from '~/types'
 
 @Component({
   components: {
     Element,
     ColorCode,
+    UniqueWordsCounter,
     SearchBlock
   }
 })
@@ -65,14 +67,8 @@ export default class App extends Vue {
     return parsedElements
   }
 
-  get wordRows(): WordRow[] { return this.$store.state.wordRows }
-  get languguColumn(): string[] { return this.wordRows.map(wR => wR.langugu) }
-  get languguWords(): string[] { return this.languguColumn.filter(lC => !lC.includes(' ')) }
-  get uniqueLanguguWords(): string[] { return [...new Set(this.languguWords)] }
-  get numberOfUniqueLanguguWords(): number { return this.uniqueLanguguWords.length }
-
-  async fetch({ store }: Context) {
-    await store.dispatch('getStoreData')
+  fetch({ store }: Context) {
+    store.dispatch('getStoreData')
   }
 }
 </script>
