@@ -5,8 +5,11 @@
       outlined
       placeholder="Rita ti mesagu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
     />
+    <v-btn class="check-button" @click="parse">
+      Verifa
+    </v-btn>
     <v-sheet class="grey lighten-3">
-      <Element v-for="(element, index) in parsedElements" :key="index" :element="element" />
+      <Element v-for="(element, index) in parsedElements" :key="`element-${index}`" :element="element" />
     </v-sheet>
     <ColorCode class="mt-6" />
     <UniqueWordsCounter />
@@ -34,7 +37,9 @@ import { ParsedElement } from '~/types'
 export default class App extends Vue {
   text: string = ''
 
-  get parsedElements(): ParsedElement[] {
+  parsedElements: ParsedElement[] = []
+
+  parse() {
     const parsedElements: ParsedElement[] = []
     let wordInConstruction: string = ''
     for (const char of this.text) {
@@ -59,12 +64,12 @@ export default class App extends Vue {
     // if a word was being built before the end, add it
     if (wordInConstruction.length > 0) {
       const newUnfinishedWordElement: ParsedElement = {
-        isAWord: false,
+        isAWord: true,
         string: wordInConstruction
       }
       parsedElements.push(newUnfinishedWordElement)
     }
-    return parsedElements
+    this.parsedElements = parsedElements
   }
 
   fetch({ store }: Context) {
@@ -74,4 +79,8 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.check-button {
+  margin-bottom: 25px;
+  margin-top: -20px;
+}
 </style>

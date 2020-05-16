@@ -18,10 +18,10 @@
           >{{ element.string }}</span>
         </template>
         <div><b>{{ !hasLanguguMatches ? 'No bo wordlistu' : '' }}</b></div>
-        <div v-for="(lm, index) in languguMatches" :key="index">
+        <div v-for="(lm, index) in languguMatches" :key="`lm-${index}`">
           <b>{{ lm.english }}</b> | {{ lm.esperanto }} | {{ lm.langugu }}
         </div>
-        <div v-for="(tm, index) in trapMatches" :key="index">
+        <div v-for="(tm, index) in trapMatches" :key="`tm-${index}`">
           {{ tm.english }} | {{ tm.esperanto }} | <b>{{ tm.langugu }}</b>
         </div>
       </v-tooltip>
