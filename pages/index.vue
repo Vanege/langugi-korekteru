@@ -3,7 +3,7 @@
     <v-textarea
       v-model="text"
       outlined
-      placeholder="Rita ti mesagu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili sowa. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
+      placeholder="Rita ti mesagu, ki yu wanta verifa. Ifo ti wordu no ba bo ti wordlistu, oro ifo ti wordu ofteni ba eroru, ti korekteru wili eymaka. Hovera wordu foro finda translatu ki findeda bo ti wordlistu."
     />
     <v-btn class="check-button" @click="parse">
       Verifa
